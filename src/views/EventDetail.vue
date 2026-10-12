@@ -44,15 +44,15 @@
       </div>
 
       <div class="sidebar">
-        <div class="ticket-card sticky-pane">
+        <AppCard class="ticket-card sticky-pane">
           <h3>Ticket Price</h3>
           <div class="price">{{ event.price }}</div>
           <p class="ticket-desc">{{ event.ticketDesc }}</p>
 
-          <button class="btn-register">Register Now</button>
+          <AppButton variant="primary" class="btn-register">Register Now</AppButton>
 
           <p class="spots">{{ event.spots }}</p>
-        </div>
+        </AppCard>
       </div>
     </div>
   </div>
@@ -75,6 +75,8 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getEventById } from '@/data/events.js'
+import AppCard from '@/components/ui/AppCard.vue'
+import AppButton from '@/components/ui/AppButton.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -174,11 +176,7 @@ const event = computed(() => getEventById(route.params.id))
 
 /* FOCAL POINT CARD */
 .ticket-card {
-  background: white;
   padding: var(--space-8);
-  border-radius: var(--space-4);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 
@@ -207,18 +205,6 @@ const event = computed(() => getEventById(route.params.id))
 
 .btn-register {
   width: 100%;
-  padding: var(--space-4);
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-register:hover {
-  background: var(--primary-hover);
 }
 
 .spots {
